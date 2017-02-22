@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 using namespace std;
 
 void TwoOne()
@@ -11,22 +12,22 @@ void TwoTwo()
 {
     const int n = 5;
     const char* msg = "Hello World";
-    
+
     for (int i = 0; i < n; i++)
     {
         cout << msg << endl;
     }
-    
+
     cout << endl;
-    
+
     int i = 0;
     while(i++ < n)
     {
         cout << msg << endl;
     }
-    
+
     cout << endl;
-    
+
     int j = 0;
     do
     {
@@ -101,24 +102,24 @@ void ThreeOneFour()
 void ThreeOneFive()
 {
     using namespace std;
- 
+
     int main() {
         count << "Hello World \n";
         return 0;
     }
- 
+
     #include <iostream>
 }
 */
 
 void ThreeTwo()
 {
-    int n;
+    int n = 0;
     cin >> n;
-    
+
     int sum = 0;
-    int max = -99999; // naive super small number
-    int min = 99999; // naive super big number
+    int max = numeric_limits<int>::min(); // naive super small number
+    int min = numeric_limits<int>::max(); // naive super big number
     for (int i = 0; i < n; i++)
     {
         int num;
@@ -133,10 +134,10 @@ void ThreeTwo()
             max = num;
         }
     }
-    
+
     int range = max - min;
     double mean = double(sum) / double(n);
-    
+
     cout << "Mean: " << mean << endl;
     cout << "Max: " << max << endl;
     cout << "Min: " << min << endl;
@@ -147,7 +148,7 @@ void ThreeThree()
 {
     int n;
     cin >> n;
-    int primes[n];
+    vector<int> primes(n);
     int primesFound = 0;
     int numberToTest = 2;
     while(primesFound < n) {
@@ -246,7 +247,7 @@ void ThreeFiveOne()
 void ThreeFiveTwo()
 {
  #define o 1 // that is an oh not zero
- 
+
  int main()
  {
     return o;
@@ -261,7 +262,7 @@ void ThreeFiveTwo()
     I really don't know, calculates squares of inverse values up to N.
     Then within each iteration flip the sign of the accumulation up to i
     times.
-    
+
     The answer flew over my head too, something about a series
     (calc 2 was a real struggle for me in uni)
  */
@@ -274,7 +275,7 @@ void FourOne()
     short number;
     cout << "Enter a number...";
     cin >> number;
-    
+
     cout << "the factorial of " << number << " is ";
     int accumulator = 1;
     for(; number > 0; accumulator *= number--);
@@ -289,12 +290,12 @@ void FourTwo()
     short number;
     cout << "Enter a number...";
     cin >> number;
-    
+
     if(number < 0) {
         cout << "cannot calcuate factorials of negative numbers" << endl;
         return;
     }
-    
+
     cout << "the factorial of " << number << " is ";
     int accumulator = 1;
     for(; number > 0; accumulator *= number--);
@@ -311,12 +312,12 @@ void FourFour()
     short number;
     cout << "Enter a number...";
     cin >> number;
-    
+
     if(number < 0) {
         cout << "cannot calcuate factorials of negative numbers" << endl;
         return;
     }
-    
+
     cout << "the factorial of " << number << " is ";
     long long accumulator = 1;
     for(; number > 0; accumulator *= number--);
@@ -332,57 +333,88 @@ void FourFour()
 /* 4.6 */
 /* our code accounts for most results except ones that would overflow past long long */
 
+/* look how sexy functional and recursive programming are */
+long long factorial(short number)
+{
+  if (number == 0)
+  {
+    return 1;
+  }
+  return number * factorial(number - 1);
+}
+
+void BonusRecursion()
+{
+  short number;
+  cout << "Enter a number...";
+  cin >> number;
+
+  if(number < 0)
+  {
+      cout << "cannot calcuate factorials of negative numbers" << endl;
+      return;
+  }
+
+  cout << "the factorial of " << number << " is ";
+  cout << factorial(number) << endl;
+
+}
+
 int main(int argc, const char * argv[]) {
     cout << "2.1" << endl;
     TwoOne();
     cout << endl;
-    
+
     cout << "2.2" << endl;
     TwoTwo();
     cout << endl;
-    
+
     cout << "3.1.2" << endl;
     ThreeOneTwo();
     cout << endl;
-    
+
     cout << "3.1.3" << endl;
     ThreeOneThree();
     cout << endl;
-    
+
     cout << "3.1.4" << endl;
     ThreeOneFour();
     cout << endl;
-    
+
     cout << "3.2" << endl;
     //ThreeTwo();
     cout << endl;
-    
+
     cout << "3.3" << endl;
     //ThreeThree();
     cout << endl;
-    
+
     cout << "3.4.1" << endl;
     //ThreeFourOne();
     cout << endl;
-    
+
     cout << "3.4.2" << endl;
     //ThreeFourTwo();
     cout << endl;
-    
+
     cout << "3.4.3" << endl;
     //ThreeFourThree();
     cout << endl;
-    
+
     cout << "4.1" << endl;
     //FourOne();
     cout << endl;
-    
+
     cout << "4.2" << endl;
     //FourTwo();
     cout << endl;
-    
+
     cout << "4.4" << endl;
-    FourFour();
+    //FourFour();
+    cout << endl;
+
+    cout << "Bonus using recursion" << endl;
+    BonusRecursion();
     cout << endl;
 
     return 0;
