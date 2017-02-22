@@ -7,4 +7,4 @@ dist :
 clean :
 	rm -rf dist/
 build : dist
-	clang++ -o dist/one -std=c++11 -Wpedantic src/main.cpp
+	clang++ -o dist/main -std=c++11 -Wpedantic src/main.cpp
